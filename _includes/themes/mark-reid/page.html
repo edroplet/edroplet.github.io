@@ -1,6 +1,3 @@
 <div id="page">
-	
-<h1 class="emphnext">{{ page.title }}</h1>
-{{ content }}
-
+<h1 class="emphnext">{{ site.title | default: site.github.repository_name }}</h1>
 </div><!-- End Page -->
