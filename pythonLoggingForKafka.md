@@ -3,6 +3,7 @@
   关于日志报警的优化，我以前写过相关的文章，有兴趣的朋友可以找找，明确的解释了 那些过滤和汇总的实现。 
   其实以前在乐视的时候把一堆关于热门视频计算节点的logging都加了层redis输出…  但是会碰到一个问题就是，如果因为某种问题导致python疯狂的向redis写入数据，会造成redis的卡顿，因为是根别的业务混布的，又因为我的其他的管理平台也用这台redis…..  所以时不时的会有些影响… 不扯淡了，kafka在mq的功能和性能上要比redis强的，毕竟redis不只是消息队列.   
   通过在O(1)的磁盘数据结构上提供消息持久化，对于即使数以TB的消息存储也能够保持长时间的稳定性能。在商用机器上可以提供每秒数十万条的消息，redis的测试结果一般是在2w左右就有些吃力了….  
+  ![](https://github.com/edroplet/edroplet.github.io/blob/master/kafka.jpg)  
   安装很是简单… 
 ```
 $ git clone https://github.com/taykey/python-kafka-logging/
