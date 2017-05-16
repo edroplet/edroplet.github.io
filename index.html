@@ -1,3 +1,11 @@
-<HTML>
-  <a herf="https://github.com/edroplet/edroplet.github.io/blob/master/pythonLoggingForKafka.md">使用kafka扩展python logging集中式日志收集 </a>
-</HTML>
+---
+　　layout: default
+　　title: 我的Blog
+---
+<h2>{{ page.title }}</h2>
+<p>最新文章</p>
+<ul>
+{% for post in site.posts %}
+	<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>

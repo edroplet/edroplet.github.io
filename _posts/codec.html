@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="scripts/jsonFormater.js"></script>
+        <script type="text/javascript" src="../style/js/common.js"></script>
+        <link type="text/css" rel="stylesheet" href="styles/jsonFormater.css" />
+        <link rel="stylesheet" href="../style/css/vendor.1cc8d3af.css" />
+        <link rel="stylesheet" href="../style/css/main.06f25e6d.css" />
+        <title>Codec加解密过程</title>
+        <style>
+body {
+	width: 90%;
+	padding-top: 20px;
+	padding-left: 20px;
+	font-family: Arial, 'Times New Roman', 'Microsoft YaHei', SimHei;
+}
+
+.panel {
+	width: 100%;
+	color: red;
+}
+
+.panel span {
+	color: #000;
+	font-family: normal;
+}
+
+.content {
+	width: 100%;
+	padding-top: 20px;
+}
+
+.input {
+	width: 500px;
+	font-family: Arial, 'Times New Roman', 'Microsoft YaHei', SimHei;
+}
+
+.explain {
+	color: blue;
+}
+
+.explain span {
+	color: black;
+}
+
+.explain font {
+	font-family: 华文行楷;
+}
+
+.text-muted {
+	font-family: 华文行楷;
+}
+
+.div_ts {
+	width: 350px;
+	height: 80px;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	font-size: 13px;
+	z-index: 100;
+}
+
+#div_ts {
+	border: 1px dotted gray;
+	background: #dedede;
+	opacity: 0.5;
+	z-index: 99;
+}
+
+pre {
+	display: block;
+	overflow: auto;
+	background: #f4f4f4;
+	padding: 5px 10px;
+	border: 1px solid #eee;
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+	white-space: pre-wrap; /* Firefox */
+}
+</style>
+        <script type="text/javascript">
+function clickHandler(i){
+	if(i==1){
+		document.form1.action='?t=3&action=encode&nns_codec=20021002';
+	}else{
+		document.form1.action='?t=3&action=decode';
+	}
+	document.form1.submit();
+}
+
+function decodedata(){
+	document.form2.action='?t=3&action=decodedata';
+	document.form2.submit();
+}
+</script>
+    </head>
+    <body class="ng-scope">
+        <div class="container ng-scope">
+            <div class="header ng-scope" style="height: 60px;">
+                <ul class="nav nav-pills pull-right">
+                    <li class="">
+                        <a href="http://10.1.172.95/testBigData/index.php?t=1" target=_self>SDK上报日志</a>
+                    </li>
+                    <li class="active">
+                        <a href="http://10.1.172.95/testBigData/encrypt/index2.php?t=3" target=_self>Codec加解密</a>
+                    </li>
+                    <li class="">
+                        <a href="http://10.1.172.95/testBigData/encrypt/index.php?t=4" target=_self>URL加解密</a>
+                    </li>
+                    <li class="">
+                        <a href="http://10.1.172.95/testBigData/tvos/vt.php?t=6" target=_self>TVOS终端模拟</a>
+                    </li>
+                    <li class="">
+                        <a href="http://10.1.172.95/testBigData/tvos/xhprof.php?t=7" target=_self>Xhprof</a>
+                    </li>
+                </ul>
+                <h1 class="text-muted">
+                    <a href="http://10.1.172.95/testBigData/index.php" style="text-decoration:none;">芒果TV-平台支撑测试平台</a>
+                </h1>
+            </div>
+            <div class="panel">
+                <h1>Codec加解密测试</h1>
+                <div class=explain>
+				功能说明：
+                    <span>请求参数加解密，加密结果解密。适用于视达科、TVOS相关接口。</span>
+                </div>
+            </div>
+            <div class="panel" style="padding-bottom: 5px;">
+                <form action="" method="post" name="form1">
+				请求参数加解密：Codec:
+                    <input type="text" name="nns_codec"
+					value="20021002" />
+                    <input type="button"
+					onclick="clickHandler(1);" value="加密" />&nbsp; &nbsp;
+                    <input
+					type="button" onclick="clickHandler(2);" value="解密" />
+                    <br />
+                    <textarea style='width: 100%;' rows="6" name="content" id="content"
+					placeholder="pack">
+</textarea>
+                </form>
+            </div>
+            <div class="panel" style="padding-bottom: 100px;">
+                <form action="" method="post" name="form2">
+                    <div style="float: left; width: 100%;">
+					返回结果解密： Codec:
+                        <input type="text" name="nns_codec"
+						value="20021002" />
+                        <input type="button"
+						onclick="decodedata();" value="解密" />
+                    </div>
+                    <textarea style='width: 100%;' rows="6" name="data" id="data"
+					placeholder="加密结果数据">
+AIMAOBcivc3Y9KSFssppwG0eDdmvQubYK5dRqPN4YylpXSLsjirNpRayEmlnB9nLBtaSF7pq0nfChpwCEFU8xjFCWFpdzONosu8os/Hc8GsY24a7NEma6FSiGDN/FDVF7kdoY+SVpIQz5X6KgGIaeqO0ps9Wy1N1uu4C2VjyHofCFZd8eSd7InN0YXR1cyI6IjAwMDAwIiwic2VxaWQiOiJhNDcxNmJiOThjNDg0NjVlOGNhYzkxY2QxZjM2YzlkYiIsInRpY2tldCI6Ijk1ODhTOVhWTVBZUFhKVlhBMzlDIiwiZXhwaXJlIjoyNTkyMDAwLCJ1c2VyaW5mbyI6eyJsb2dpbmFjY291bnQiOiIxODY3MDA1MDMxMSIsInZpcEV4cGlyZXRpbWUiOjE1NDk2OTk0MzksImZpcnN0dGltZSI6IiIsInVpZCI6IiIsInJ0eXBlIjoiIiwibW9iaWxlIjoiMTg2NzAwNTAzMTEiLCJpc1ZpcCI6MSwid2VjaGF0X3R5cGUiOiIiLCJsb2dpbnR5cGUiOjIsInZpcHBsYXRmb3JtIjoib3R0IiwiYXZhdGFyIjoiaHR0cDpcL1wvcS5xbG9nby5jblwvcXFhcHBcLzIxMDczMVwvNUUwQzY1RDI0RDZGQzkyRDVGNjkwMEIyMDA0NkRFMjlcLzEwMCIsInJlbGF0ZV9tb2JpbGUiOiIxODY3MDA1MDMxMSIsIm5pY2tuYW1lIjoibWc5NTExOTIwNGlMaSIsImVtYWlsIjoiMTg2NzAwNTAzMTFAaHVuYW50di5jb20uY24iLCJ1dWlkIjoiNTAzMTA4MDgwOTc0MWYwMzJlYzJlNjM5MTZhYmY4Y2YifX0=</textarea>
+                    <br />
+                    <div>
+                        <font color=red style='float:left;'>解密数据结果：</font>
+                        <textarea readonly style='width:100%;height:300px;'>{"status":"00000","seqid":"a4716bb98c48465e8cac91cd1f36c9db","ticket":"9588S9XVMPYPXJVXA39C","expire":2592000,"userinfo":{"loginaccount":"18670050311","vipExpiretime":1549699439,"firsttime":"","uid":"","rtype":"","mobile":"18670050311","isVip":1,"wechat_type":"","logintype":2,"vipplatform":"ott","avatar":"http:\/\/q.qlogo.cn\/qqapp\/210731\/5E0C65D24D6FC92D5F6900B20046DE29\/100","relate_mobile":"18670050311","nickname":"mg95119204iLi","email":"18670050311@hunantv.com.cn","uuid":"5031080809741f032ec2e63916abf8cf"}}</textarea>
+                    </div>
+                </form>
+            </div>
+            <div id="div_ts" class="div_ts"></div>
+            <div class="div_ts">
+                <pre>
+                    <a href="javascript:toTop();">返回顶部</a>
+                    <span style="float: right;">by ャWshuhaoメ Email:
+                        <a
+					href="mailto:mgtv@vip.qq.com">mgtv@vip.qq.com</a>
+                    </span>
+                </pre>
+            </div>
+        </div>
+    </body>
+</html>
