@@ -1,24 +1,76 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
+
+# Site settings
+title: '凡间一滴水'
+header-img: "/assets/images/edroplet.png"
+tagline: ["cn", "Site", "droplet"]
+description: "凡间一滴水|读而立·写而生"
+#url: "https://edroplet.github.io" 
+#host: localhost
+#port: 5000
+
+# About/contact
+author :
+    name : droplet
+    email : edroplet@sina.com
+    github : edroplet 
+
+
+# Data
+gavatar: /assets/images/edroplet.png
+favicon: /assets/images/favicon.png
+
+twitter_username:
+github_username: edroplet
+facebook_username: 
+weibo_username: qxs820624
+zhihu_username: 
+
 theme: jekyll-theme-time-machine
-baseurl: /
+baseurl: ""
 permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+
+# Build settings  
+# use Github Flavored Markdown !important  
+# document: http://jekyllrb.com/docs/configuration/#kramdown
 highlighter: rouge
 markdown: kramdown
-timezone: Asia/Shanghai 
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Shanghai
+encoding: utf-8
+paginate: 8
+
+#  Deprecation: You appear to have pagination turned on, but you haven't included the `jekyll-paginate` gem. Ensure you have `gems: [jekyll-paginate]` in your configuration file.
+gems: [jekyll-paginate]
+
+# Defaults for posts
+defaults:
+  -
+    scope: 
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "droplet"
+      header-img: "/assets/images/edroplet.png" # We don't want posts without a header image, that whould mean white on white
+
+# If you are using a 64-bit version of Ruby on Windows, then add :x64_mingw to the list of platforms as follows:
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : 凡间一滴水
-tagline: Site droplet
-author :
-  name : droplet
-  email : edroplet@sina.com
-  github : edroplet
-# twitter : username
-# feedburner : feedname
+github:
+    build_revision: u-asasdfwm9bhth
+    is_project_page: false
+    owner_url: https://github.com/edroplet
+    owner_name: edroplet
+    is_user_page: false
+    owner_gravatar_url: https://avatars2.githubusercontent.com/u/25737710?v=3&s=460
+
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
@@ -28,8 +80,8 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : https://edroplet.github.io
-google_analytics : true
+#production_url : https://edroplet.github.io
+
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
 JB :
@@ -133,4 +185,11 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
 
-host: 0.0.0.0
+# Analytics and webmaster tools stuff goes here
+google_analytics: true
+google_verify: true
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+# Links to include in footer navigation
+

@@ -1,0 +1,1 @@
+cmd /k jekyll serve --safe --watch --host localhost
