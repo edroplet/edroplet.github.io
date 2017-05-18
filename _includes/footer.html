@@ -126,13 +126,14 @@
 
 
 <!-- Highlight.js -->
+<script src="/assets/js/highlight.min.js"></script>
 <script>
-	var async=require('async');
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
-        hljs.initHighlightingOnLoad();
-    })
+function(){
+	hljs.initHighlightingOnLoad();
+}
 </script>
 
+
 <!-- style -->
-<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+<link href="/assets/css/github.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | absolute_url  }}">
