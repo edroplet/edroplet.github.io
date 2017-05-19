@@ -109,7 +109,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : http://edroplet.github.io/
+  # BASE_PATH : http://edroplet.github.io/
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
@@ -121,7 +121,7 @@ JB :
   #
   
   # ASSET_PATH : false
-  ASSET_PATH : https://edroplet.github.io/assets/
+  # ASSET_PATH : https://edroplet.github.io/assets/
 
   # These paths are to the main pages Jekyll-Bootstrap ships with.
   # Some JB helpers refer to these paths; change them here if needed.
@@ -186,8 +186,8 @@ JB :
   # where [HELPER] is the name of the helper you are overriding.
 
 # Analytics and webmaster tools stuff goes here
-google_analytics: true
-google_verify: true
+google_analytics: UA-99239498-1
+google_verify: google2929fde67cd51138.html
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
 bing_verify:
 

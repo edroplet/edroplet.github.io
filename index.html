@@ -3,8 +3,9 @@ layout: default
 title: 我的Blog
 description: "{{ site.description }}"
 header-img: "{{ site.header-img }}"
+tagline: Supporting tagline
 ---
-<h2>{{ page.title }}</h2>
+{% include JB/setup %}
 <p>最新文章</p>
 
 <ul  class="posts">
@@ -12,4 +13,3 @@ header-img: "{{ site.header-img }}"
 	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
-
